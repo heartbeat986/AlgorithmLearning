@@ -12,7 +12,7 @@
         <button onclick="bubbleSort()">冒泡排序</button>
         <button onclick="selectSort()">选择排序</button>
         <button onclick="insertSort()">插入排序</button>
-
+        <button onclick="shellSort()">希尔排序</button>
     </div>
 </body>
 <script>
@@ -56,6 +56,28 @@
         console.log(oldArray);
     }
 
+
+    function shellSort() {
+        var oldArray = [6,4,7,5,1,3,2];
+        var length = oldArray.length;
+        var h = 1;
+        while (h < length/3) {
+            h = h*3 + 1; 
+        }
+        while ( h >= 1 ) {
+            for (let i = h; i < length; i++) {
+                for (let j = i; j>=h; j-=h) {
+                    if (oldArray[j] < oldArray[j-h]) {
+                        swap(oldArray,j,j-h);   
+                    }
+                }
+           
+            }
+            h = parseInt(h/3);
+        }
+        
+        console.log(oldArray);
+    }
 
     function swap(array,i,j) {
         var temp = array[i];
